@@ -11,8 +11,7 @@
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
               <div class="card-body p-4 p-lg-5 text-black">
 
-                <form>
-
+                <div>
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                     <span class="h1 fw-bold mb-0">Logo</span>
@@ -30,42 +29,52 @@
 
                   <div *ngIf="tabLogin">
                     <div class="form-outline mb-3">
-                      <input placeholder="Email" type="email" id="form2Example17" class="form-control form-control-lg" style="border-radius: 2rem;"/>
+                      <input placeholder="Email" type="email" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="loginEmail"/>
                     </div>
   
                     <div class="form-outline mb-3">
-                      <input placeholder="Password" type="password" id="form2Example27" class="form-control form-control-lg" style="border-radius: 2rem;"/>
-                      <a class="small text-muted" href="#!">Forgot password?</a>
+                      <input placeholder="Password" type="password" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="loginPassword"/>
+                      <a class="small text-muted" (click)="onForgotPasswordClick()" href="#">Forgot password?</a>
                     </div>
   
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                      <button (click)="onLogin()" class="btn btn-dark btn-lg btn-block" type="button">Login</button>
                     </div>
                   </div>
 
                   <div *ngIf="tabRegister">
                     <div class="form-outline mb-3">
-                      <input placeholder="Username" type="text" class="form-control form-control-lg" style="border-radius: 2rem;"/>
+                      <input placeholder="Username" type="text" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="regUsername"/>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <input placeholder="Email" type="text" class="form-control form-control-lg" style="border-radius: 2rem;"/>
+                      <input placeholder="Email" type="text" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="regEmail"/>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <input placeholder="Password" type="password" class="form-control form-control-lg" style="border-radius: 2rem;"/>
+                      <input placeholder="Password" type="password" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="regPassword"/>
                     </div>
 
                     <div class="form-outline mb-3">
-                      <input placeholder="Confirm Password" type="password" class="form-control form-control-lg" style="border-radius: 2rem;"/>
+                      <input placeholder="Confirm Password" type="password" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="regConfirmPassword"/>
                     </div>
 
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" type="button">Register</button>
+                      <button (click)="onRegister()" class="btn btn-dark btn-lg btn-block" type="button">Register</button>
+                    </div>
+                  </div>
+
+                  <div *ngIf="tabForgotPassword">
+                    <div class="form-outline mb-3">
+                      <input placeholder="Email" type="text" class="form-control form-control-lg" style="border-radius: 2rem;" [(ngModel)]="forgotEmail"/>
+                    </div>
+
+                    <div class="pt-1 mb-4">
+                      <button (click)="onResetPassword()" class="btn btn-dark btn-lg btn-block" type="button">Reset Password</button>
                     </div>
                   </div>
                 
-                </form>
+                </div>
 
               </div>
             </div>

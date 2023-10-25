@@ -1,3 +1,5 @@
+import { LoginService } from './../Services/LoginService/login.service';
+import { RegisterService } from './../Services/RegisterService/register.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,14 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  constructor(private registerService: RegisterService, private loginService: LoginService){}
+
   tabRegister: Boolean = false;
   tabLogin: Boolean = true;
+  tabForgotPassword: Boolean = false;
   regUsername: string = '';
   regEmail: string = '';
   regPassword: string = '';
   regConfirmPassword: string = '';
-  loginUsername: string = '';
+  loginEmail: string = '';
   loginPassword: string = '';
+  forgotEmail: string = '';
 
 
   ngOnInit(): void {
@@ -23,20 +30,52 @@ export class AppComponent implements OnInit {
   onTabRegisterClick(){
     this.tabLogin = false;
     this.tabRegister = true;
+    this.tabForgotPassword = false;
     console.log("Register click")
   }
 
   onTabLoginClick(){
     this.tabLogin = true;
     this.tabRegister = false;
+    this.tabForgotPassword = false;
     console.log("Login click")
   }
 
-  onLogin(){
+  onForgotPasswordClick(){
+    this.tabForgotPassword = true;
+    this.tabLogin = false;
+    this.tabRegister = false;
+  }
 
+  onLogin(){
+    if(this.loginEmail == "" || this.loginPassword == ""){
+      alert("Please enter all details");
+    }
+    else{
+      this.loginService.login(this.loginEmail, this.loginPassword);
+    }
   }
 
   onRegister(){
-    
+    if(this.regUsername == "" || this.regEmail == "" || this.regPassword == "" || this.regConfirmPassword == ""){
+      alert("Please enter all details");
+    }
+    else{
+      if(this.regPassword !== this.regConfirmPassword){
+        alert("Passwords do not match");
+      }
+      else{
+        this.registerService.register(this.regUsername, this.regEmail, this.regPassword);
+      }
+    }
+  }
+
+  onResetPassword(){
+    if(this.forgotEmail == ""){
+      alert("Please enter all details");
+    }
+    else{
+      this.loginService.forgotPassword(this.forgotEmail);
+    }
   }
 }

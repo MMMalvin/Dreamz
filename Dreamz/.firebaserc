@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fir-test-20fa0": {
+      "hosting": {
+        "Dreamz": [
+          "dreamz-yogi"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fir-test-20fa0"
+  }
+}
