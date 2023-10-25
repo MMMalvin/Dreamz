@@ -8,6 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   tabRegister: Boolean = false;
   tabLogin: Boolean = true;
+  regUsername: string = '';
+  regEmail: string = '';
+  regPassword: string = '';
+  regConfirmPassword: string = '';
+  loginUsername: string = '';
+  loginPassword: string = '';
 
 
   ngOnInit(): void {
@@ -24,5 +30,13 @@ export class AppComponent implements OnInit {
     this.tabLogin = true;
     this.tabRegister = false;
     console.log("Login click")
+  }
+
+  onLogin(){
+
+  }
+
+  onRegister(){
+    
   }
 }
