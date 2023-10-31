@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LoginService {
+  uid:string = '';
 
   db = getFirestore(initializeApp(environment.firebase));
 
@@ -18,15 +19,13 @@ export class LoginService {
     this.fireAuth.signInWithEmailAndPassword(email, password)
     .then(async (userCredential) => {
       const user = userCredential.user;
-      const  uid = user?.uid;
+      this.uid = user!.uid;
       
-      alert("Login Successful, uid:" + uid);
-
-
+      alert("Login Successful, uid:" + this.uid);
     })
     .catch((error) => {
       console.log(error);
-      alert('Login Failed')
+      alert('Login Failed');
     })
 
   }

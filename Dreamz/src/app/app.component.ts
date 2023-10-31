@@ -21,11 +21,10 @@ export class AppComponent implements OnInit {
   loginEmail: string = '';
   loginPassword: string = '';
   forgotEmail: string = '';
+  loginSuccess: Boolean = true;
 
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
   onTabRegisterClick(){
     this.tabLogin = false;
@@ -53,6 +52,7 @@ export class AppComponent implements OnInit {
     }
     else{
       this.loginService.login(this.loginEmail, this.loginPassword);
+      this.loginSuccess = true;
     }
   }
 
@@ -66,6 +66,7 @@ export class AppComponent implements OnInit {
       }
       else{
         this.registerService.register(this.regUsername, this.regEmail, this.regPassword);
+        this.loginSuccess = true;
       }
     }
   }

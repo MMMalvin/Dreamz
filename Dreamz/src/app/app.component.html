@@ -1,4 +1,4 @@
-<section class="vh-100" style="background-color: #D2B1B1;">
+<section *ngIf="!loginSuccess" class="vh-100" style="background-color: #D2B1B1;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
@@ -84,3 +84,5 @@
     </div>
   </div>
 </section>
+
+<home *ngIf="loginSuccess"> </home>
